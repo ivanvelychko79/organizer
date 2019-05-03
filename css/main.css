@@ -24,6 +24,14 @@ body{
     background-color: rgb(150,230,159);
     cursor: pointer;
 }
+.create-board:hover{
+    top: 95px;
+    left: 45px;
+    padding-top: 40px;
+    font-size: 22px;
+    width: 340px;
+    height: 70px;
+}
 h3{
     padding: 30px 0 15px 20px;
     color: white;
@@ -167,4 +175,50 @@ h3 > span{
     text-align: center;
     font-size: 27px;
     padding-top: 5px;
+}
+.create-list{
+    position: absolute;
+    display: none;
+    top: 150px;
+    left: 50px;
+    width: 165px;
+    height: 125px;
+    background: rgb(6,29,97);
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    line-height: 7.5;
+    cursor: pointer;
+}
+.create-list:hover{
+    top: 145px;
+    left: 45px;
+    width: 175px;
+    height: 135px;
+    font-size: 19px;
+    line-height: 7;
+}
+.name-list{
+    position: absolute;
+    top: 150px;
+    left: 400px;
+    width: 270px;
+    height: 100px;
+    box-shadow: 1px 5px 10px rgba(0,0,0,0.5);
+    border-radius: 2px;
+    background: rgb(246,246,246);
+}
+.name-list > span{
+    border: 1px solid rgb(150,230,159);
+    color: rgb(150,230,159);
+    background: white;
+    border-radius: 50%;
+    font-size: 13px;
+    padding: 0 5px 1px 5px;
+}
+.input-list{
+    margin: 20px 0 0 10px;
+    width: 220px;
+    height: 30px;
 }

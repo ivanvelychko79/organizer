@@ -8,6 +8,7 @@ var nameBoard = document.getElementById('nameBT');
 var newBoard1 = document.getElementsByClassName('new-board-1')[0];
 var newBoard2 = document.getElementsByClassName('new-board-2')[0];
 var board1Name = document.getElementsByClassName('board1-name-icon')[0];
+var createList = document.getElementsByClassName('create-list')[0];
 
 // запрос на создание нового блока задач, текущий блок пропадает, блок с вводом появляется
 createBoard.addEventListener('click', function () {
@@ -57,4 +58,5 @@ newBoard1.addEventListener('click', function () {
     newBoard.style.display = 'none';
     createBoard.style.display = 'none';
     board1Name.style.display = 'inline';
+    createList.style.display = 'inline';
 })
