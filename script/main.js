@@ -9,6 +9,11 @@ var newBoard1 = document.getElementsByClassName('new-board-1')[0];
 var newBoard2 = document.getElementsByClassName('new-board-2')[0];
 var board1Name = document.getElementsByClassName('board1-name-icon')[0];
 var createList = document.getElementsByClassName('create-list')[0];
+var nameList = document.getElementsByClassName('name-list')[0];
+var span2 = document.getElementById('sp2');
+var inputList = document.getElementById('nameLS');
+var nameEv1 = document.getElementsByClassName('name-event-list-1')[0];
+var inputEv1 = document.getElementsByClassName('input-level-1')[0];
 
 // запрос на создание нового блока задач, текущий блок пропадает, блок с вводом появляется
 createBoard.addEventListener('click', function () {
@@ -51,7 +56,7 @@ createNewBoard.addEventListener('click', function () {
     }
 });
 
-//переход в меню нового блока задач, верхняя иконка с названием
+//переход в меню нового блока задач, верхняя иконка с названием, появление синего блока "Add a list"
 newBoard1.addEventListener('click', function () {
     board1Name.innerHTML = sessionStorage.getItem('nameBoard');
     newBoard1.style.display = 'none';
@@ -59,4 +64,33 @@ newBoard1.addEventListener('click', function () {
     createBoard.style.display = 'none';
     board1Name.style.display = 'inline';
     createList.style.display = 'inline';
+});
+
+//клик на синий блок "Add a list", появление подблока с вводом
+createList.addEventListener('click', function(){
+    createList.style.display = 'none';
+    nameList.style.display = 'inline';
+});
+
+//клик по "х", возврат на синий блок
+span2.addEventListener('click', function(){
+    createList.style.display = 'inline';
+    nameList.style.display = 'none';
+});
+
+//появление подблока с названием по клику "Enter"
+inputList.addEventListener('keyup', function(e){
+    var name = inputList.value;
+    window.sessionStorage.setItem('inputList', name);
+    if(e.keyCode === 13){
+        e.preventDefault();
+        nameEv1.innerHTML = sessionStorage.getItem('inputList');
+        var nameList2 = nameList.cloneNode(true);
+        document.body.appendChild(nameList2);
+        // window.sessionStorage.removeItem('inputList', name);
+        
+        nameList2.style.left = '350px';
+        // inputList.value.remove();
+    }
 })
+
