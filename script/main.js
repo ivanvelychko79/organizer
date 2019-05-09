@@ -12,8 +12,10 @@ var createList = document.getElementsByClassName('create-list')[0];
 var nameList = document.getElementsByClassName('name-list')[0];
 var span2 = document.getElementById('sp2');
 var inputList = document.getElementById('nameLS');
+var eventList = document.getElementsByClassName('event-list-1')[0];
 var nameEv1 = document.getElementsByClassName('name-event-list-1')[0];
 var inputEv1 = document.getElementsByClassName('input-level-1')[0];
+
 
 // запрос на создание нового блока задач, текущий блок пропадает, блок с вводом появляется
 createBoard.addEventListener('click', function () {
@@ -67,30 +69,54 @@ newBoard1.addEventListener('click', function () {
 });
 
 //клик на синий блок "Add a list", появление подблока с вводом
-createList.addEventListener('click', function(){
+createList.addEventListener('click', function () {
     createList.style.display = 'none';
     nameList.style.display = 'inline';
 });
 
 //клик по "х", возврат на синий блок
-span2.addEventListener('click', function(){
-    createList.style.display = 'inline';
-    nameList.style.display = 'none';
+span2.addEventListener('click', function () {
+    if (blockName.length == 0) {
+        createList.style.display = 'inline';
+        nameList.style.display = 'none';
+        createList.style.left = '50px';
+    } else if (blockName.length == 1) {
+        createList.style.display = 'inline';
+        nameList.style.display = 'none';
+        createList.style.left = '300px';
+    }
 });
 
-//появление подблока с названием по клику "Enter"
-inputList.addEventListener('keyup', function(e){
-    var name = inputList.value;
-    window.sessionStorage.setItem('inputList', name);
-    if(e.keyCode === 13){
-        e.preventDefault();
-        nameEv1.innerHTML = sessionStorage.getItem('inputList');
-        var nameList2 = nameList.cloneNode(true);
-        document.body.appendChild(nameList2);
-        // window.sessionStorage.removeItem('inputList', name);
-        
-        nameList2.style.left = '350px';
-        // inputList.value.remove();
-    }
-})
+//хранение названий подблоков
+var blockName = [];
 
+//ввод названия подблока
+inputList.addEventListener('keyup', function (e) {
+    if (e.keyCode === 13) {
+        eventList.style.display = 'inline';
+        addText();
+    }
+});
+
+//функция добавления названий в подблоки
+function addText() {
+    var count = 0;
+    count++;    
+    for (i = 0; i < count; i++) {
+        if (blockName.length == 0) {
+            blockName.push(inputList.value);
+            nameEv1.innerHTML = blockName[0];
+            inputList.value = '';
+            nameList.style.left = '290px';
+        } else if (blockName.length == 1){
+            var eventList2 = eventList.cloneNode(true);
+            document.body.append(eventList2);
+            blockName.push(inputList.value);
+            eventList2.style.left = '290px';
+            nameEv1.innerHTML = blockName[1];            
+            nameList.style.left = '530px';
+            inputList.value = '';
+        }
+        
+    }
+};
