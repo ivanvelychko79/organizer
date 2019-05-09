@@ -112,8 +112,8 @@ function addText() {
             var eventList2 = eventList.cloneNode(true);
             document.body.append(eventList2);
             blockName.push(inputList.value);
-            eventList2.style.left = '290px';
-            nameEv1.innerHTML = blockName[1];            
+            eventList2.children[0].innerHTML = blockName[1];  
+            eventList2.style.left = '290px';            
             nameList.style.left = '530px';
             inputList.value = '';
         }
