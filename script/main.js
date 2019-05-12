@@ -14,7 +14,7 @@ var span2 = document.getElementById('sp2');
 var inputList = document.getElementById('nameLS');
 var eventList = document.getElementsByClassName('event-list-1')[0];
 var nameEv1 = document.getElementsByClassName('name-event-list-1')[0];
-var inputEv1 = document.getElementsByClassName('input-level-1')[0];
+var inputEv1 = document.getElementsByClassName('input-event-1')[0];
 
 
 // запрос на создание нового блока задач, текущий блок пропадает, блок с вводом появляется
@@ -58,6 +58,17 @@ createNewBoard.addEventListener('click', function () {
     }
 });
 
+//создание нового блока задач с названием нажатием "enter"
+nameBoard.addEventListener('keyup', function (e) {
+    if (e.keyCode === 13) {
+        newBoard1.style.display = 'inline';
+        newBoard.style.display = 'none';
+        board1Name.style.display = 'none';
+        createBoard.style.display = 'inline';
+        newBoard1.innerHTML = sessionStorage.getItem('nameBoard');
+    }
+});
+
 //переход в меню нового блока задач, верхняя иконка с названием, появление синего блока "Add a list"
 newBoard1.addEventListener('click', function () {
     board1Name.innerHTML = sessionStorage.getItem('nameBoard');
@@ -80,43 +91,45 @@ span2.addEventListener('click', function () {
         createList.style.display = 'inline';
         nameList.style.display = 'none';
         createList.style.left = '50px';
-    } else if (blockName.length == 1) {
+    } else if (blockName.length > 0) {
         createList.style.display = 'inline';
         nameList.style.display = 'none';
-        createList.style.left = '300px';
+        var pos = blockName.length * 240;
+        createList.style.left = (pos + 50) + 'px';
     }
 });
 
 //хранение названий подблоков
 var blockName = [];
 
-//ввод названия подблока
+//ввод названия подблока, запуск функции по нажатию "enter" 
 inputList.addEventListener('keyup', function (e) {
     if (e.keyCode === 13) {
         eventList.style.display = 'inline';
-        addText();
+        blockName.push(inputList.value);
+        nameEv1.innerHTML = blockName[0];
+        inputList.value = '';
+        nameList.style.left = '290px';
+        //создание клона подблока, для его дальнейшего использования в цикле
+        var eventListClone = eventList.cloneNode(true);
+        if (blockName.length > 1) {
+            for (var i = 1; i < blockName.length; i++) {
+                document.body.append(eventListClone);
+                eventListClone.children[0].innerHTML = blockName[i];
+                var clonePos1 = 240 * i;
+                var clonePos2 = 240 * i;
+                eventListClone.style.left = (clonePos1 + 50) + 'px';
+                nameList.style.left = (clonePos2 + 290) + 'px';
+            }
+        }
     }
 });
 
-//функция добавления названий в подблоки
-function addText() {
-    var count = 0;
-    count++;    
-    for (i = 0; i < count; i++) {
-        if (blockName.length == 0) {
-            blockName.push(inputList.value);
-            nameEv1.innerHTML = blockName[0];
-            inputList.value = '';
-            nameList.style.left = '290px';
-        } else if (blockName.length == 1){
-            var eventList2 = eventList.cloneNode(true);
-            document.body.append(eventList2);
-            blockName.push(inputList.value);
-            eventList2.children[0].innerHTML = blockName[1];  
-            eventList2.style.left = '290px';            
-            nameList.style.left = '530px';
-            inputList.value = '';
-        }
-        
+var blockEvent = [];
+
+inputEv1.addEventListener('keyup', function(e){
+    if(e.keyCode === 13){
+        blockEvent.push(inputEv1.value);
     }
-};
+})
+
