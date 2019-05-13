@@ -242,7 +242,7 @@ h3 > span{
     font-weight: 500;
 }
 .event-list-1{
-    display: inline-table;
+    display: none;
     position: absolute;
     top: 150px;
     left: 50px;
@@ -269,9 +269,20 @@ h3 > span{
     box-shadow: 0px 2px 1px rgba(0,0,0,0.5);
 }
 .events{
-    display: inline-block;
-    margin: 10px 0 0 8px;
-    width: 200px;
-    height: 35px;
-    border: 1px solid grey;
+    display: none;
+    background: rgb(199,252,223);
+    margin: 10px 0 10px 8px;
+    padding: 10px 0 0 10px;
+    width: 192px;
+    height: 30px;
+    border-radius: 2px;
+    box-shadow: 1px 5px 5px rgba(0,0,0,0.5);
+}
+.events > span {
+    display: none;
+    float: right;
+    font-weight: 700;
+    color: gray;
+    font-size: 12px;
+    padding: 5px 20px 0 0;
 }

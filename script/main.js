@@ -11,8 +11,10 @@ var board1Name = document.getElementsByClassName('board1-name-icon')[0];
 var createList = document.getElementsByClassName('create-list')[0];
 var nameList = document.getElementsByClassName('name-list')[0];
 var span2 = document.getElementById('sp2');
+var span3 = document.getElementById('sp3');
 var inputList = document.getElementById('nameLS');
 var eventList = document.getElementsByClassName('event-list-1')[0];
+var events = document.getElementsByClassName('events')[0];
 var nameEv1 = document.getElementsByClassName('name-event-list-1')[0];
 var inputEv1 = document.getElementsByClassName('input-event-1')[0];
 
@@ -105,7 +107,7 @@ var blockName = [];
 //ввод названия подблока, запуск функции по нажатию "enter" 
 inputList.addEventListener('keyup', function (e) {
     if (e.keyCode === 13) {
-        eventList.style.display = 'inline';
+        eventList.style.display = 'inline-table';
         blockName.push(inputList.value);
         nameEv1.innerHTML = blockName[0];
         inputList.value = '';
@@ -125,11 +127,23 @@ inputList.addEventListener('keyup', function (e) {
     }
 });
 
+//хранение названий событий
 var blockEvent = [];
 
-inputEv1.addEventListener('keyup', function(e){
-    if(e.keyCode === 13){
+inputEv1.addEventListener('keyup', function (e) {
+    if (e.keyCode === 13) {
         blockEvent.push(inputEv1.value);
+        events.style.display = 'block';
+        span3.style.display = 'inline-block';
+        events.innerHTML = blockEvent[0];
+        inputEv1.value = '';
+        var eventsClone = events.cloneNode(true);
+        if (blockEvent.length > 1) {
+            for (var i = 1; i < blockEvent.length; i++) {
+                eventList.append(eventsClone);
+                eventsClone.innerHTML = blockEvent[i];
+            }
+        }
     }
 })
 
