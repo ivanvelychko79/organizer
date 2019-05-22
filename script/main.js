@@ -13,10 +13,6 @@ var nameList = document.getElementsByClassName('name-list')[0];
 var span2 = document.getElementById('sp2');
 var span3 = document.getElementById('sp3');
 var inputList = document.getElementById('nameLS');
-var eventList = document.getElementsByClassName('event-list-1')[0];
-var events = document.getElementsByClassName('events')[0];
-var nameEv1 = document.getElementsByClassName('name-event-list-1')[0];
-var inputEv1 = document.getElementsByClassName('input-event-1')[0];
 
 
 // запрос на создание нового блока задач, текущий блок пропадает, блок с вводом появляется
@@ -101,49 +97,87 @@ span2.addEventListener('click', function () {
     }
 });
 
+
 //хранение названий подблоков
 var blockName = [];
 
 //ввод названия подблока, запуск функции по нажатию "enter" 
 inputList.addEventListener('keyup', function (e) {
     if (e.keyCode === 13) {
-        eventList.style.display = 'inline-table';
         blockName.push(inputList.value);
-        nameEv1.innerHTML = blockName[0];
         inputList.value = '';
-        nameList.style.left = '290px';
-        //создание клона подблока, для его дальнейшего использования в цикле
-        var eventListClone = eventList.cloneNode(true);
-        if (blockName.length > 1) {
-            for (var i = 1; i < blockName.length; i++) {
-                document.body.append(eventListClone);
-                eventListClone.children[0].innerHTML = blockName[i];
-                var clonePos1 = 240 * i;
-                var clonePos2 = 240 * i;
-                eventListClone.style.left = (clonePos1 + 50) + 'px';
-                nameList.style.left = (clonePos2 + 290) + 'px';
-            }
+        for (var i = 0; i < blockName.length; i++) {
+            var clonePos2 = 240 * i;
+            nameList.style.left = (clonePos2 + 290) + 'px';
+        }
+        switch (blockName.length) {
+            case 1:
+                // первый подблок, название, строка ввода, блок события; классы для этого;
+                var lst1 = document.createElement('div');
+                var nmLst1 = document.createElement('div');
+                var inpEv1 = document.createElement('input');
+                var ev1 = document.createElement('div');
+                var mrk1 = document.createElement('span');
+                mrk1.innerText = '✓';
+
+                lst1.className = 'event-list';
+                nmLst1.className = 'name-event-list';
+                inpEv1.className = 'input-event';
+                ev1.className = 'events';
+                mrk1.className = 'sp';
+
+                nmLst1.innerHTML = blockName[0];
+                document.body.append(lst1);
+
+                lst1.style.display = 'inline-table';
+                lst1.appendChild(nmLst1);
+                lst1.appendChild(inpEv1);
+                lst1.appendChild(ev1);
+                lst1.appendChild(mrk1);
+
+                var blockEvent1 = [];
+                inpEv1.addEventListener('keyup', function (e) {
+                    if (e.keyCode === 13) {
+                        blockEvent1.push(inpEv1.value);
+                        ev1.style.display = 'block';
+                        mrk1.style.display = 'inline-block';
+                        ev1.innerHTML = blockEvent1[0];
+                        inpEv1.value = '';
+                        var evClone1 = ev1.cloneNode(true);
+                        var mrk1Clone = mrk1.cloneNode(true);
+                        if (blockEvent1.length > 1) {
+                            for (var i = 1; i < blockEvent1.length; i++) {
+                                lst1.append(evClone1);
+                                evClone1.innerHTML = blockEvent1[i];
+                                lst1.append(mrk1Clone);
+                                mrk1Clone.style.top = '150px';
+                                if (blockEvent1.length > 2) {
+                                    var mrk1ClonePos = 50 * i;
+                                    mrk1Clone.style.top = (mrk1ClonePos + 100) + 'px';
+                                }
+                            }
+                        }
+                    }
+                });
+                break;
+            case 2:
+                var lst2 = document.createElement('div');
+                var nmLst2 = document.createElement('div');
+                var inpEv2 = document.createElement('input');
+                lst2.className = 'event-list';
+                nmLst2.className = 'name-event-list';
+                nmLst2.innerHTML = blockName[1];
+                inpEv2.className = 'input-event';
+                document.body.append(lst2);
+                lst2.style.display = 'inline-table';
+                lst2.appendChild(nmLst2);
+                lst2.appendChild(inpEv2);
+                lst2.style.left = '290px';
+                break;
+            case 3:
+                console.log('very very good');
+                break;
         }
     }
 });
-
-//хранение названий событий
-var blockEvent = [];
-
-inputEv1.addEventListener('keyup', function (e) {
-    if (e.keyCode === 13) {
-        blockEvent.push(inputEv1.value);
-        events.style.display = 'block';
-        span3.style.display = 'inline-block';
-        events.innerHTML = blockEvent[0];
-        inputEv1.value = '';
-        var eventsClone = events.cloneNode(true);
-        if (blockEvent.length > 1) {
-            for (var i = 1; i < blockEvent.length; i++) {
-                eventList.append(eventsClone);
-                eventsClone.innerHTML = blockEvent[i];
-            }
-        }
-    }
-})
 
