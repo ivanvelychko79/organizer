@@ -98,10 +98,11 @@ span2.addEventListener('click', function () {
 });
 
 
-//хранение названий подблоков
+// хранение названий подблоков
 var blockName = [];
 
-//ввод названия подблока, запуск функции по нажатию "enter" 
+// ввод названия подблока, появление подблока по нажатию "enter",
+// смещение в сторону окна для ввода названия подблока 
 inputList.addEventListener('keyup', function (e) {
     if (e.keyCode === 13) {
         blockName.push(inputList.value);
@@ -110,50 +111,57 @@ inputList.addEventListener('keyup', function (e) {
             var clonePos2 = 240 * i;
             nameList.style.left = (clonePos2 + 290) + 'px';
         }
+        // работа с подблоками
         switch (blockName.length) {
+            // подблок
             case 1:
-                // первый подблок, название, строка ввода, блок события; классы для этого;
-                var lst1 = document.createElement('div');
-                var nmLst1 = document.createElement('div');
-                var inpEv1 = document.createElement('input');
-                var ev1 = document.createElement('div');
-                var mrk1 = document.createElement('span');
-                mrk1.innerText = '✓';
-
-                lst1.className = 'event-list';
-                nmLst1.className = 'name-event-list';
-                inpEv1.className = 'input-event';
-                ev1.className = 'events';
-                mrk1.className = 'sp';
-
-                nmLst1.innerHTML = blockName[0];
-                document.body.append(lst1);
-
-                lst1.style.display = 'inline-table';
-                lst1.appendChild(nmLst1);
-                lst1.appendChild(inpEv1);
-                lst1.appendChild(ev1);
-                lst1.appendChild(mrk1);
-
-                var blockEvent1 = [];
-                inpEv1.addEventListener('keyup', function (e) {
+                // подблок, название, строка ввода, блок события,
+                // классы CSS, дочерние элементы
+                var lst = document.createElement('div');
+                var nmLst = document.createElement('div');
+                var inpEv = document.createElement('input');
+                var ev = document.createElement('div');
+                var mrk = document.createElement('span');
+                mrk.innerText = '✓';
+                lst.className = 'event-list';
+                nmLst.className = 'name-event-list';
+                inpEv.className = 'input-event';
+                ev.className = 'events';
+                mrk.className = 'sp';
+                // появление подблока, вставка названия
+                // добавление дочерних элементов
+                document.body.append(lst);
+                nmLst.innerHTML = blockName[0];
+                lst.style.display = 'inline-table';
+                lst.appendChild(nmLst);
+                lst.appendChild(inpEv);
+                lst.appendChild(ev);
+                lst.appendChild(mrk);
+                // хранение событий
+                var blockEvent = [];
+                // работа с событиями, вставка событий, клонирование элемента, работа с CSS
+                inpEv.addEventListener('keyup', function (e) {
                     if (e.keyCode === 13) {
-                        blockEvent1.push(inpEv1.value);
-                        ev1.style.display = 'block';
-                        mrk1.style.display = 'inline-block';
-                        ev1.innerHTML = blockEvent1[0];
-                        inpEv1.value = '';
-                        var evClone1 = ev1.cloneNode(true);
-                        var mrk1Clone = mrk1.cloneNode(true);
-                        if (blockEvent1.length > 1) {
-                            for (var i = 1; i < blockEvent1.length; i++) {
-                                lst1.append(evClone1);
-                                evClone1.innerHTML = blockEvent1[i];
-                                lst1.append(mrk1Clone);
-                                mrk1Clone.style.top = '150px';
-                                if (blockEvent1.length > 2) {
-                                    var mrk1ClonePos = 50 * i;
-                                    mrk1Clone.style.top = (mrk1ClonePos + 100) + 'px';
+                        blockEvent.push(inpEv.value);
+                        ev.style.display = 'block';
+                        mrk.style.display = 'inline-block';
+                        ev.innerHTML = blockEvent[0];
+                        inpEv.value = '';
+                        // клонирование блока события и метки '✓'
+                        var evClone = ev.cloneNode(true);
+                        var mrkClone = mrk.cloneNode(true);
+                        // появление клонированного элемента
+                        if (blockEvent.length > 1) {
+                            for (var i = 1; i < blockEvent.length; i++) {
+                                lst.append(evClone);
+                                evClone.innerHTML = blockEvent[i];
+                                lst.append(mrkClone);
+                                mrkClone.style.top = '150px';
+                                // смещение метки, в зависимости от количества
+                                // блоков событий
+                                if (blockEvent.length > 2) {
+                                    var mrkClonePos = 50 * i;
+                                    mrkClone.style.top = (mrkClonePos + 100) + 'px';
                                 }
                             }
                         }
@@ -161,21 +169,331 @@ inputList.addEventListener('keyup', function (e) {
                 });
                 break;
             case 2:
-                var lst2 = document.createElement('div');
-                var nmLst2 = document.createElement('div');
-                var inpEv2 = document.createElement('input');
-                lst2.className = 'event-list';
-                nmLst2.className = 'name-event-list';
-                nmLst2.innerHTML = blockName[1];
-                inpEv2.className = 'input-event';
-                document.body.append(lst2);
-                lst2.style.display = 'inline-table';
-                lst2.appendChild(nmLst2);
-                lst2.appendChild(inpEv2);
-                lst2.style.left = '290px';
+                // подблок, название, строка ввода, блок события,
+                // классы CSS, дочерние элементы
+                var lst = document.createElement('div');
+                var nmLst = document.createElement('div');
+                var inpEv = document.createElement('input');
+                var ev = document.createElement('div');
+                var mrk = document.createElement('span');
+                mrk.innerText = '✓';
+                lst.className = 'event-list';
+                nmLst.className = 'name-event-list';
+                inpEv.className = 'input-event';
+                ev.className = 'events';
+                mrk.className = 'sp';
+                lst.style.left = '290px';
+                // появление подблока, вставка названия
+                // добавление дочерних элементов
+                document.body.append(lst);
+                nmLst.innerHTML = blockName[1];
+                lst.style.display = 'inline-table';
+                lst.appendChild(nmLst);
+                lst.appendChild(inpEv);
+                lst.appendChild(ev);
+                lst.appendChild(mrk);
+                // хранение событий
+                var blockEvent = [];
+                // работа с событиями, вставка событий, клонирование элемента, работа с CSS
+                inpEv.addEventListener('keyup', function (e) {
+                    if (e.keyCode === 13) {
+                        blockEvent.push(inpEv.value);
+                        ev.style.display = 'block';
+                        mrk.style.display = 'inline-block';
+                        ev.innerHTML = blockEvent[0];
+                        inpEv.value = '';
+                        // клонирование блока события и метки '✓'
+                        var evClone = ev.cloneNode(true);
+                        var mrkClone = mrk.cloneNode(true);
+                        // появление клонированного элемента
+                        if (blockEvent.length > 1) {
+                            for (var i = 1; i < blockEvent.length; i++) {
+                                lst.append(evClone);
+                                evClone.innerHTML = blockEvent[i];
+                                lst.append(mrkClone);
+                                mrkClone.style.top = '150px';
+                                // смещение метки, в зависимости от количества
+                                // блоков событий
+                                if (blockEvent.length > 2) {
+                                    var mrkClonePos = 50 * i;
+                                    mrkClone.style.top = (mrkClonePos + 100) + 'px';
+                                }
+                            }
+                        }
+                    }
+                });
                 break;
             case 3:
-                console.log('very very good');
+                // подблок, название, строка ввода, блок события,
+                // классы CSS, дочерние элементы
+                var lst = document.createElement('div');
+                var nmLst = document.createElement('div');
+                var inpEv = document.createElement('input');
+                var ev = document.createElement('div');
+                var mrk = document.createElement('span');
+                mrk.innerText = '✓';
+                lst.className = 'event-list';
+                nmLst.className = 'name-event-list';
+                inpEv.className = 'input-event';
+                ev.className = 'events';
+                mrk.className = 'sp';
+                lst.style.left = '530px';
+                // появление подблока, вставка названия
+                // добавление дочерних элементов
+                document.body.append(lst);
+                nmLst.innerHTML = blockName[2];
+                lst.style.display = 'inline-table';
+                lst.appendChild(nmLst);
+                lst.appendChild(inpEv);
+                lst.appendChild(ev);
+                lst.appendChild(mrk);
+                // хранение событий
+                var blockEvent = [];
+                // работа с событиями, вставка событий, клонирование элемента, работа с CSS
+                inpEv.addEventListener('keyup', function (e) {
+                    if (e.keyCode === 13) {
+                        blockEvent.push(inpEv.value);
+                        ev.style.display = 'block';
+                        mrk.style.display = 'inline-block';
+                        ev.innerHTML = blockEvent[0];
+                        inpEv.value = '';
+                        // клонирование блока события и метки '✓'
+                        var evClone = ev.cloneNode(true);
+                        var mrkClone = mrk.cloneNode(true);
+                        // появление клонированного элемента
+                        if (blockEvent.length > 1) {
+                            for (var i = 1; i < blockEvent.length; i++) {
+                                lst.append(evClone);
+                                evClone.innerHTML = blockEvent[i];
+                                lst.append(mrkClone);
+                                mrkClone.style.top = '150px';
+                                // смещение метки, в зависимости от количества
+                                // блоков событий
+                                if (blockEvent.length > 2) {
+                                    var mrkClonePos = 50 * i;
+                                    mrkClone.style.top = (mrkClonePos + 100) + 'px';
+                                }
+                            }
+                        }
+                    }
+                });
+                break;
+            case 4:
+                // подблок, название, строка ввода, блок события,
+                // классы CSS, дочерние элементы
+                var lst = document.createElement('div');
+                var nmLst = document.createElement('div');
+                var inpEv = document.createElement('input');
+                var ev = document.createElement('div');
+                var mrk = document.createElement('span');
+                mrk.innerText = '✓';
+                lst.className = 'event-list';
+                nmLst.className = 'name-event-list';
+                inpEv.className = 'input-event';
+                ev.className = 'events';
+                mrk.className = 'sp';
+                lst.style.left = '770px';
+                // появление подблока, вставка названия
+                // добавление дочерних элементов
+                document.body.append(lst);
+                nmLst.innerHTML = blockName[3];
+                lst.style.display = 'inline-table';
+                lst.appendChild(nmLst);
+                lst.appendChild(inpEv);
+                lst.appendChild(ev);
+                lst.appendChild(mrk);
+                // хранение событий
+                var blockEvent = [];
+                // работа с событиями, вставка событий, клонирование элемента, работа с CSS
+                inpEv.addEventListener('keyup', function (e) {
+                    if (e.keyCode === 13) {
+                        blockEvent.push(inpEv.value);
+                        ev.style.display = 'block';
+                        mrk.style.display = 'inline-block';
+                        ev.innerHTML = blockEvent[0];
+                        inpEv.value = '';
+                        // клонирование блока события и метки '✓'
+                        var evClone = ev.cloneNode(true);
+                        var mrkClone = mrk.cloneNode(true);
+                        // появление клонированного элемента
+                        if (blockEvent.length > 1) {
+                            for (var i = 1; i < blockEvent.length; i++) {
+                                lst.append(evClone);
+                                evClone.innerHTML = blockEvent[i];
+                                lst.append(mrkClone);
+                                mrkClone.style.top = '150px';
+                                // смещение метки, в зависимости от количества
+                                // блоков событий
+                                if (blockEvent.length > 2) {
+                                    var mrkClonePos = 50 * i;
+                                    mrkClone.style.top = (mrkClonePos + 100) + 'px';
+                                }
+                            }
+                        }
+                    }
+                });
+                break;
+            case 5:
+                // подблок, название, строка ввода, блок события,
+                // классы CSS, дочерние элементы
+                var lst = document.createElement('div');
+                var nmLst = document.createElement('div');
+                var inpEv = document.createElement('input');
+                var ev = document.createElement('div');
+                var mrk = document.createElement('span');
+                mrk.innerText = '✓';
+                lst.className = 'event-list';
+                nmLst.className = 'name-event-list';
+                inpEv.className = 'input-event';
+                ev.className = 'events';
+                mrk.className = 'sp';
+                // появление подблока, вставка названия
+                // добавление дочерних элементов
+                document.body.append(lst);
+                nmLst.innerHTML = blockName[4];
+                lst.style.display = 'inline-table';
+                lst.appendChild(nmLst);
+                lst.appendChild(inpEv);
+                lst.appendChild(ev);
+                lst.appendChild(mrk);
+                // хранение событий
+                var blockEvent = [];
+                // работа с событиями, вставка событий, клонирование элемента, работа с CSS
+                inpEv.addEventListener('keyup', function (e) {
+                    if (e.keyCode === 13) {
+                        blockEvent.push(inpEv.value);
+                        ev.style.display = 'block';
+                        mrk.style.display = 'inline-block';
+                        ev.innerHTML = blockEvent[0];
+                        inpEv.value = '';
+                        // клонирование блока события и метки '✓'
+                        var evClone = ev.cloneNode(true);
+                        var mrkClone = mrk.cloneNode(true);
+                        // появление клонированного элемента
+                        if (blockEvent.length > 1) {
+                            for (var i = 1; i < blockEvent.length; i++) {
+                                lst.append(evClone);
+                                evClone.innerHTML = blockEvent[i];
+                                lst.append(mrkClone);
+                                mrkClone.style.top = '150px';
+                                // смещение метки, в зависимости от количества
+                                // блоков событий
+                                if (blockEvent.length > 2) {
+                                    var mrkClonePos = 50 * i;
+                                    mrkClone.style.top = (mrkClonePos + 100) + 'px';
+                                }
+                            }
+                        }
+                    }
+                });
+                break;
+            case 6:
+                // подблок, название, строка ввода, блок события,
+                // классы CSS, дочерние элементы
+                var lst = document.createElement('div');
+                var nmLst = document.createElement('div');
+                var inpEv = document.createElement('input');
+                var ev = document.createElement('div');
+                var mrk = document.createElement('span');
+                mrk.innerText = '✓';
+                lst.className = 'event-list';
+                nmLst.className = 'name-event-list';
+                inpEv.className = 'input-event';
+                ev.className = 'events';
+                mrk.className = 'sp';
+                // появление подблока, вставка названия
+                // добавление дочерних элементов
+                document.body.append(lst);
+                nmLst.innerHTML = blockName[5];
+                lst.style.display = 'inline-table';
+                lst.appendChild(nmLst);
+                lst.appendChild(inpEv);
+                lst.appendChild(ev);
+                lst.appendChild(mrk);
+                // хранение событий
+                var blockEvent = [];
+                // работа с событиями, вставка событий, клонирование элемента, работа с CSS
+                inpEv.addEventListener('keyup', function (e) {
+                    if (e.keyCode === 13) {
+                        blockEvent.push(inpEv.value);
+                        ev.style.display = 'block';
+                        mrk.style.display = 'inline-block';
+                        ev.innerHTML = blockEvent[0];
+                        inpEv.value = '';
+                        // клонирование блока события и метки '✓'
+                        var evClone = ev.cloneNode(true);
+                        var mrkClone = mrk.cloneNode(true);
+                        // появление клонированного элемента
+                        if (blockEvent.length > 1) {
+                            for (var i = 1; i < blockEvent.length; i++) {
+                                lst.append(evClone);
+                                evClone.innerHTML = blockEvent[i];
+                                lst.append(mrkClone);
+                                mrkClone.style.top = '150px';
+                                // смещение метки, в зависимости от количества
+                                // блоков событий
+                                if (blockEvent.length > 2) {
+                                    var mrkClonePos = 50 * i;
+                                    mrkClone.style.top = (mrkClonePos + 100) + 'px';
+                                }
+                            }
+                        }
+                    }
+                });
+                break;
+            case 7:
+                // подблок, название, строка ввода, блок события,
+                // классы CSS, дочерние элементы
+                var lst = document.createElement('div');
+                var nmLst = document.createElement('div');
+                var inpEv = document.createElement('input');
+                var ev = document.createElement('div');
+                var mrk = document.createElement('span');
+                mrk.innerText = '✓';
+                lst.className = 'event-list';
+                nmLst.className = 'name-event-list';
+                inpEv.className = 'input-event';
+                ev.className = 'events';
+                mrk.className = 'sp';
+                // появление подблока, вставка названия
+                // добавление дочерних элементов
+                document.body.append(lst);
+                nmLst.innerHTML = blockName[6];
+                lst.style.display = 'inline-table';
+                lst.appendChild(nmLst);
+                lst.appendChild(inpEv);
+                lst.appendChild(ev);
+                lst.appendChild(mrk);
+                // хранение событий
+                var blockEvent = [];
+                // работа с событиями, вставка событий, клонирование элемента, работа с CSS
+                inpEv.addEventListener('keyup', function (e) {
+                    if (e.keyCode === 13) {
+                        blockEvent.push(inpEv.value);
+                        ev.style.display = 'block';
+                        mrk.style.display = 'inline-block';
+                        ev.innerHTML = blockEvent[0];
+                        inpEv.value = '';
+                        // клонирование блока события и метки '✓'
+                        var evClone = ev.cloneNode(true);
+                        var mrkClone = mrk.cloneNode(true);
+                        // появление клонированного элемента
+                        if (blockEvent.length > 1) {
+                            for (var i = 1; i < blockEvent.length; i++) {
+                                lst.append(evClone);
+                                evClone.innerHTML = blockEvent[i];
+                                lst.append(mrkClone);
+                                mrkClone.style.top = '150px';
+                                // смещение метки, в зависимости от количества
+                                // блоков событий
+                                if (blockEvent.length > 2) {
+                                    var mrkClonePos = 50 * i;
+                                    mrkClone.style.top = (mrkClonePos + 100) + 'px';
+                                }
+                            }
+                        }
+                    }
+                });
                 break;
         }
     }
