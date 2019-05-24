@@ -157,6 +157,16 @@ inputList.addEventListener('keyup', function (e) {
                                 evClone.innerHTML = blockEvent[i];
                                 lst.append(mrkClone);
                                 mrkClone.style.top = '150px';
+                                // эффект зачеркивания и смена цвета блока события по клику
+                                evClone.onclick = function () {
+                                    if (this.style.backgroundColor) {
+                                        this.style.backgroundColor = "";
+                                        this.style.textDecoration = 'none';
+                                    } else {
+                                        this.style.backgroundColor = "#F2ECFC";
+                                        this.style.textDecoration = 'line-through';
+                                    }
+                                }
                                 // смещение метки, в зависимости от количества
                                 // блоков событий
                                 if (blockEvent.length > 2) {
@@ -167,6 +177,16 @@ inputList.addEventListener('keyup', function (e) {
                         }
                     }
                 });
+                // эффект зачеркивания и смена цвета блока события по клику
+                ev.onclick = function () {
+                    if (this.style.backgroundColor) {
+                        this.style.backgroundColor = "";
+                        this.style.textDecoration = 'none';
+                    } else {
+                        this.style.backgroundColor = "#F2ECFC";
+                        this.style.textDecoration = 'line-through';
+                    }
+                }
                 break;
             case 2:
                 // подблок, название, строка ввода, блок события,
@@ -212,6 +232,16 @@ inputList.addEventListener('keyup', function (e) {
                                 evClone.innerHTML = blockEvent[i];
                                 lst.append(mrkClone);
                                 mrkClone.style.top = '150px';
+                                // эффект зачеркивания и смена цвета блока события по клику
+                                evClone.onclick = function () {
+                                    if (this.style.backgroundColor) {
+                                        this.style.backgroundColor = "";
+                                        this.style.textDecoration = 'none';
+                                    } else {
+                                        this.style.backgroundColor = "#F2ECFC";
+                                        this.style.textDecoration = 'line-through';
+                                    }
+                                }
                                 // смещение метки, в зависимости от количества
                                 // блоков событий
                                 if (blockEvent.length > 2) {
@@ -222,6 +252,16 @@ inputList.addEventListener('keyup', function (e) {
                         }
                     }
                 });
+                // эффект зачеркивания и смена цвета блока события по клику
+                ev.onclick = function () {
+                    if (this.style.backgroundColor) {
+                        this.style.backgroundColor = "";
+                        this.style.textDecoration = 'none';
+                    } else {
+                        this.style.backgroundColor = "#F2ECFC";
+                        this.style.textDecoration = 'line-through';
+                    }
+                }
                 break;
             case 3:
                 // подблок, название, строка ввода, блок события,
@@ -267,6 +307,16 @@ inputList.addEventListener('keyup', function (e) {
                                 evClone.innerHTML = blockEvent[i];
                                 lst.append(mrkClone);
                                 mrkClone.style.top = '150px';
+                                // эффект зачеркивания и смена цвета блока события по клику
+                                evClone.onclick = function () {
+                                    if (this.style.backgroundColor) {
+                                        this.style.backgroundColor = "";
+                                        this.style.textDecoration = 'none';
+                                    } else {
+                                        this.style.backgroundColor = "#F2ECFC";
+                                        this.style.textDecoration = 'line-through';
+                                    }
+                                }
                                 // смещение метки, в зависимости от количества
                                 // блоков событий
                                 if (blockEvent.length > 2) {
@@ -277,6 +327,16 @@ inputList.addEventListener('keyup', function (e) {
                         }
                     }
                 });
+                // эффект зачеркивания и смена цвета блока события по клику
+                ev.onclick = function () {
+                    if (this.style.backgroundColor) {
+                        this.style.backgroundColor = "";
+                        this.style.textDecoration = 'none';
+                    } else {
+                        this.style.backgroundColor = "#F2ECFC";
+                        this.style.textDecoration = 'line-through';
+                    }
+                }
                 break;
             case 4:
                 // подблок, название, строка ввода, блок события,
@@ -322,6 +382,16 @@ inputList.addEventListener('keyup', function (e) {
                                 evClone.innerHTML = blockEvent[i];
                                 lst.append(mrkClone);
                                 mrkClone.style.top = '150px';
+                                // эффект зачеркивания и смена цвета блока события по клику
+                                evClone.onclick = function () {
+                                    if (this.style.backgroundColor) {
+                                        this.style.backgroundColor = "";
+                                        this.style.textDecoration = 'none';
+                                    } else {
+                                        this.style.backgroundColor = "#F2ECFC";
+                                        this.style.textDecoration = 'line-through';
+                                    }
+                                }
                                 // смещение метки, в зависимости от количества
                                 // блоков событий
                                 if (blockEvent.length > 2) {
@@ -332,6 +402,16 @@ inputList.addEventListener('keyup', function (e) {
                         }
                     }
                 });
+                // эффект зачеркивания и смена цвета блока события по клику
+                ev.onclick = function () {
+                    if (this.style.backgroundColor) {
+                        this.style.backgroundColor = "";
+                        this.style.textDecoration = 'none';
+                    } else {
+                        this.style.backgroundColor = "#F2ECFC";
+                        this.style.textDecoration = 'line-through';
+                    }
+                }
                 break;
             case 5:
                 // подблок, название, строка ввода, блок события,
@@ -347,6 +427,7 @@ inputList.addEventListener('keyup', function (e) {
                 inpEv.className = 'input-event';
                 ev.className = 'events';
                 mrk.className = 'sp';
+                lst.style.left = '1010px';
                 // появление подблока, вставка названия
                 // добавление дочерних элементов
                 document.body.append(lst);
@@ -376,6 +457,16 @@ inputList.addEventListener('keyup', function (e) {
                                 evClone.innerHTML = blockEvent[i];
                                 lst.append(mrkClone);
                                 mrkClone.style.top = '150px';
+                                // эффект зачеркивания и смена цвета блока события по клику
+                                evClone.onclick = function () {
+                                    if (this.style.backgroundColor) {
+                                        this.style.backgroundColor = "";
+                                        this.style.textDecoration = 'none';
+                                    } else {
+                                        this.style.backgroundColor = "#F2ECFC";
+                                        this.style.textDecoration = 'line-through';
+                                    }
+                                }
                                 // смещение метки, в зависимости от количества
                                 // блоков событий
                                 if (blockEvent.length > 2) {
@@ -386,6 +477,16 @@ inputList.addEventListener('keyup', function (e) {
                         }
                     }
                 });
+                // эффект зачеркивания и смена цвета блока события по клику
+                ev.onclick = function () {
+                    if (this.style.backgroundColor) {
+                        this.style.backgroundColor = "";
+                        this.style.textDecoration = 'none';
+                    } else {
+                        this.style.backgroundColor = "#F2ECFC";
+                        this.style.textDecoration = 'line-through';
+                    }
+                }
                 break;
             case 6:
                 // подблок, название, строка ввода, блок события,
@@ -401,6 +502,7 @@ inputList.addEventListener('keyup', function (e) {
                 inpEv.className = 'input-event';
                 ev.className = 'events';
                 mrk.className = 'sp';
+                lst.style.left = '1250px';
                 // появление подблока, вставка названия
                 // добавление дочерних элементов
                 document.body.append(lst);
@@ -430,6 +532,16 @@ inputList.addEventListener('keyup', function (e) {
                                 evClone.innerHTML = blockEvent[i];
                                 lst.append(mrkClone);
                                 mrkClone.style.top = '150px';
+                                // эффект зачеркивания и смена цвета блока события по клику
+                                evClone.onclick = function () {
+                                    if (this.style.backgroundColor) {
+                                        this.style.backgroundColor = "";
+                                        this.style.textDecoration = 'none';
+                                    } else {
+                                        this.style.backgroundColor = "#F2ECFC";
+                                        this.style.textDecoration = 'line-through';
+                                    }
+                                }
                                 // смещение метки, в зависимости от количества
                                 // блоков событий
                                 if (blockEvent.length > 2) {
@@ -440,6 +552,16 @@ inputList.addEventListener('keyup', function (e) {
                         }
                     }
                 });
+                // эффект зачеркивания и смена цвета блока события по клику
+                ev.onclick = function () {
+                    if (this.style.backgroundColor) {
+                        this.style.backgroundColor = "";
+                        this.style.textDecoration = 'none';
+                    } else {
+                        this.style.backgroundColor = "#F2ECFC";
+                        this.style.textDecoration = 'line-through';
+                    }
+                }
                 break;
             case 7:
                 // подблок, название, строка ввода, блок события,
@@ -455,6 +577,7 @@ inputList.addEventListener('keyup', function (e) {
                 inpEv.className = 'input-event';
                 ev.className = 'events';
                 mrk.className = 'sp';
+                lst.style.left = '1490px';
                 // появление подблока, вставка названия
                 // добавление дочерних элементов
                 document.body.append(lst);
@@ -484,6 +607,16 @@ inputList.addEventListener('keyup', function (e) {
                                 evClone.innerHTML = blockEvent[i];
                                 lst.append(mrkClone);
                                 mrkClone.style.top = '150px';
+                                // эффект зачеркивания и смена цвета блока события по клику
+                                evClone.onclick = function () {
+                                    if (this.style.backgroundColor) {
+                                        this.style.backgroundColor = "";
+                                        this.style.textDecoration = 'none';
+                                    } else {
+                                        this.style.backgroundColor = "#F2ECFC";
+                                        this.style.textDecoration = 'line-through';
+                                    }
+                                }
                                 // смещение метки, в зависимости от количества
                                 // блоков событий
                                 if (blockEvent.length > 2) {
@@ -494,6 +627,16 @@ inputList.addEventListener('keyup', function (e) {
                         }
                     }
                 });
+                // эффект зачеркивания и смена цвета блока события по клику
+                ev.onclick = function () {
+                    if (this.style.backgroundColor) {
+                        this.style.backgroundColor = "";
+                        this.style.textDecoration = 'none';
+                    } else {
+                        this.style.backgroundColor = "#F2ECFC";
+                        this.style.textDecoration = 'line-through';
+                    }
+                }
                 break;
         }
     }
